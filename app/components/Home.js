@@ -25,25 +25,24 @@ class Home extends React.Component {
     this.setState(state);
   }
 
-  handleClick(character) {
-    var winner = character.characterId;
-    var loser = first(without(this.state.characters, findWhere(this.state.characters, { characterId: winner }))).characterId;
+  handleClick(dish) {
+    var winner = dish.dishId;
+    var loser = first(without(this.state.dishes, findWhere(this.state.dishes, { dishId: winner }))).dishId;
     HomeActions.vote(winner, loser);
   }
 
   render() {
-    var characterNodes = this.state.characters.map((character, index) => {
+    var dishNodes = this.state.dishs.map((dish, index) => {
       return (
-        <div key={character.characterId} className={index === 0 ? 'col-xs-6 col-sm-6 col-md-5 col-md-offset-1' : 'col-xs-6 col-sm-6 col-md-5'}>
+        <div key={dish.dishId} className={index === 0 ? 'col-xs-6 col-sm-6 col-md-5 col-md-offset-1' : 'col-xs-6 col-sm-6 col-md-5'}>
           <div className='thumbnail fadeInUp animated'>
-            <img onClick={this.handleClick.bind(this, character)} src={'http://image.eveonline.com/Character/' + character.characterId + '_512.jpg'}/>
+            <img onClick={this.handleClick.bind(this, dish)} src={'http://www.thecheesecakefactory.com' + dish.image}/>
             <div className='caption text-center'>
               <ul className='list-inline'>
-                <li><strong>Race:</strong> {character.race}</li>
-                <li><strong>Bloodline:</strong> {character.bloodline}</li>
+                <li><strong>Name:</strong> {dish.name}</li>
               </ul>
               <h4>
-                <Link to={'/characters/' + character.characterId}><strong>{character.name}</strong></Link>
+                <Link to={'/dishs/' + dish.dishId}><strong>{dish.name}</strong></Link>
               </h4>
             </div>
           </div>
@@ -53,9 +52,9 @@ class Home extends React.Component {
 
     return (
       <div className='container'>
-        <h3 className='text-center'>Click on the portrait. Select your favorite.</h3>
+        <h3 className='text-center'>Select your favorite dish.</h3>
         <div className='row'>
-          {characterNodes}
+          {dishNodes}
         </div>
       </div>
     );

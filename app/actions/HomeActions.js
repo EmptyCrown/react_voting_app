@@ -3,30 +3,30 @@ import alt from '../alt';
 class HomeActions {
   constructor() {
     this.generateActions(
-      'getTwoCharactersSuccess',
-      'getTwoCharactersFail',
+      'getTwoDishesSuccess',
+      'getTwoDishesFail',
       'voteFail'
     );
   }
 
-  getTwoCharacters() {
-    $.ajax({ url: '/api/characters' })
+  getTwoDishes() {
+    $.ajax({ url: '/api/dishes' })
       .done(data => {
-        this.actions.getTwoCharactersSuccess(data);
+        this.actions.getTwoDishesSuccess(data);
       })
       .fail(jqXhr => {
-        this.actions.getTwoCharactersFail(jqXhr.responseJSON.message);
+        this.actions.getTwoDishesFail(jqXhr.responseJSON.message);
       });
   }
 
   vote(winner, loser) {
     $.ajax({
       type: 'PUT',
-      url: '/api/characters' ,
+      url: '/api/dishes' ,
       data: { winner: winner, loser: loser }
     })
       .done(() => {
-        this.actions.getTwoCharacters();
+        this.actions.getTwoDishes();
       })
       .fail((jqXhr) => {
         this.actions.voteFail(jqXhr.responseJSON.message);

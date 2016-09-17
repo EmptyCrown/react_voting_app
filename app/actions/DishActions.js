@@ -1,30 +1,30 @@
 import alt from '../alt';
 
-class CharacterActions {
+class DishActions {
   constructor() {
     this.generateActions(
       'reportSuccess',
       'reportFail',
-      'getCharacterSuccess',
-      'getCharacterFail'
+      'getDishSuccess',
+      'getDishFail'
     );
   }
 
-  getCharacter(characterId) {
-    $.ajax({ url: '/api/characters/' + characterId })
+  getDish(dishId) {
+    $.ajax({ url: '/api/dishes/' + dishId })
       .done((data) => {
-        this.actions.getCharacterSuccess(data);
+        this.actions.getDishSuccess(data);
       })
       .fail((jqXhr) => {
-        this.actions.getCharacterFail(jqXhr);
+        this.actions.getDishFail(jqXhr);
       });
   }
 
-  report(characterId) {
+  report(dishId) {
     $.ajax({
       type: 'POST',
       url: '/api/report',
-      data: { characterId: characterId }
+      data: { dishId: dishId }
     })
       .done(() => {
         this.actions.reportSuccess();
@@ -35,4 +35,4 @@ class CharacterActions {
   }
 }
 
-export default alt.createActions(CharacterActions);
+export default alt.createActions(DishActions);

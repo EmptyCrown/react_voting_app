@@ -4,14 +4,14 @@ import HomeActions from '../actions/HomeActions';
 class HomeStore {
   constructor() {
     this.bindActions(HomeActions);
-    this.characters = [];
+    this.dishes = [];
   }
 
-  onGetTwoCharactersSuccess(data) {
-    this.characters = data;
+  onGetTwoDishesSuccess(data) {
+    this.dishes = data;
   }
 
-  onGetTwoCharactersFail(errorMessage) {
+  onGetTwoDishesFail(errorMessage) {
     toastr.error(errorMessage);
   }
 

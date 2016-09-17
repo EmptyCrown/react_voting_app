@@ -5,11 +5,11 @@ import CharacterActions from '../actions/CharacterActions';
 class CharacterStore {
   constructor() {
     this.bindActions(CharacterActions);
-    this.characterId = 0;
+    this.dishId = 0;
     this.name = 'TBD';
-    this.race = 'TBD';
-    this.bloodline = 'TBD';
-    this.gender = 'TBD';
+    this.description = 'TBD';
+    this.image = 'TBD';
+    this.link = 'TBD';
     this.wins = 0;
     this.losses = 0;
     this.winLossRatio = 0;
@@ -18,10 +18,10 @@ class CharacterStore {
 
   onGetCharacterSuccess(data) {
     assign(this, data);
-    $(document.body).attr('class', 'profile ' + this.race.toLowerCase());
-    let localData = localStorage.getItem('NEF') ? JSON.parse(localStorage.getItem('NEF')) : {};
+    //$(document.body).attr('class', 'profile ' + this.race.toLowerCase());
+    let localData = localStorage.getItem('FV') ? JSON.parse(localStorage.getItem('FV')) : {};
     let reports = localData.reports || [];
-    this.isReported = contains(reports, this.characterId);
+    this.isReported = contains(reports, this.dishId);
     // If is NaN (from division by zero) then set it to "0"
     this.winLossRatio = ((this.wins / (this.wins + this.losses) * 100) || 0).toFixed(1);
   }
@@ -32,10 +32,10 @@ class CharacterStore {
 
   onReportSuccess() {
     this.isReported = true;
-    let localData = localStorage.getItem('NEF') ? JSON.parse(localStorage.getItem('NEF')) : {};
+    let localData = localStorage.getItem('FV') ? JSON.parse(localStorage.getItem('FV')) : {};
     localData.reports = localData.reports || [];
-    localData.reports.push(this.characterId);
-    localStorage.setItem('NEF', JSON.stringify(localData));
+    localData.reports.push(this.dishId);
+    localStorage.setItem('FV', JSON.stringify(localData));
     toastr.warning('Character has been reported.');
   }
 

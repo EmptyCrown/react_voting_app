@@ -12,19 +12,28 @@
     "watch": "nodemon server.js"
   },
   "babel": {
-    "presets": ["es2015", "react"]
+    "presets": [
+      "es2015",
+      "react"
+    ]
   },
   "dependencies": {
     "alt": "^0.17.8",
     "async": "^1.5.0",
+    "bcrypt": "^0.8.7",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.14.1",
     "colors": "^1.1.2",
     "compression": "^1.6.0",
     "express": "^4.13.3",
+    "express-session": "^1.14.1",
     "history": "^1.13.0",
     "mongoose": "^4.2.5",
     "morgan": "^1.6.1",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
     "react": "^0.14.2",
+    "react-bootstrap": "^0.30.3",
     "react-dom": "^0.14.2",
     "react-router": "^1.0.0",
     "request": "^2.65.0",
