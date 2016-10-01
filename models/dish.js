@@ -9,7 +9,7 @@ var dishSchema = new mongoose.Schema({
   wins: { type: Number, default: 0 },
   losses: { type: Number, default: 0 },
   reports: { type: Number, default: 0 },
-  random: { type: [Number], index: '2d' },
+  random: { type: [Number], index: '2d', default: [0,0] },
   voted: { type: Boolean, default: false }
 });
 

@@ -14,7 +14,7 @@ class Home extends React.Component {
 
   componentDidMount() {
     HomeStore.listen(this.onChange);
-    HomeActions.getTwoCharacters();
+    HomeActions.getTwoDishes();
   }
 
   componentWillUnmount() {
@@ -32,17 +32,14 @@ class Home extends React.Component {
   }
 
   render() {
-    var dishNodes = this.state.dishs.map((dish, index) => {
+    var dishNodes = this.state.dishes.map((dish, index) => {
       return (
         <div key={dish.dishId} className={index === 0 ? 'col-xs-6 col-sm-6 col-md-5 col-md-offset-1' : 'col-xs-6 col-sm-6 col-md-5'}>
           <div className='thumbnail fadeInUp animated'>
             <img onClick={this.handleClick.bind(this, dish)} src={'http://www.thecheesecakefactory.com' + dish.image}/>
             <div className='caption text-center'>
-              <ul className='list-inline'>
-                <li><strong>Name:</strong> {dish.name}</li>
-              </ul>
               <h4>
-                <Link to={'/dishs/' + dish.dishId}><strong>{dish.name}</strong></Link>
+                <Link to={'/dishes/' + dish.dishId}><strong>{dish.name}</strong></Link>
               </h4>
             </div>
           </div>

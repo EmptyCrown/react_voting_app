@@ -3,26 +3,26 @@ import alt from '../alt';
 class FooterActions {
   constructor() {
     this.generateActions(
-      'getTopCharactersSuccess',
-      'getTopCharactersFail'
+      'getTopDishesSuccess',
+      'getTopDishesFail'
     );
     // Same as 
-    // getTopCharactersSuccess(payload) {
+    // getTopDishesSuccess(payload) {
     //   this.dispatch(payload);
     // }
 
-    // getTopCharactersFail(payload) {
+    // getTopDishesFail(payload) {
     //   this.dispatch(payload);
     // }
   }
 
-  getTopCharacters() {
-    $.ajax({ url: '/api/characters/top' })
+  getTopDishes() {
+    $.ajax({ url: '/api/dishes/top' })
       .done((data) => {
-        this.actions.getTopCharactersSuccess(data)
+        this.actions.getTopDishesSuccess(data)
       })
       .fail((jqXhr) => {
-        this.actions.getTopCharactersFail(jqXhr)
+        this.actions.getTopDishesFail(jqXhr)
       });
   }
 }

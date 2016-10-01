@@ -7,11 +7,11 @@ class DishListStore {
     this.dishes = [];
   }
 
-  onGetCharactersSuccess(data) {
+  onGetDishesSuccess(data) {
     this.dishes = data;
   }
 
-  onGetCharactersFail(jqXhr) {
+  onGetDishesFail(jqXhr) {
     toastr.error(jqXhr.responseJSON.message);
   }
 }

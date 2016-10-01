@@ -4,17 +4,17 @@ import NavbarActions from '../actions/NavbarActions';
 class NavbarStore {
   constructor() {
     this.bindActions(NavbarActions);
-    this.totalCharacters = 0;
+    this.totalDishes = 0;
     this.onlineUsers = 0;
     this.searchQuery = '';
     this.ajaxAnimationClass = '';
   }
 
-  onFindCharacterSuccess(payload) {
-    payload.history.pushState(null, '/characters/' + payload.characterId);
+  onFindDishSuccess(payload) {
+    payload.history.pushState(null, '/dishes/' + payload.dishId);
   }
 
-  onFindCharacterFail(payload) {
+  onFindDishFail(payload) {
     payload.searchForm.classList.add('shake');
     setTimeout(() => {
       payload.searchForm.classList.remove('shake');
@@ -33,11 +33,11 @@ class NavbarStore {
     this.searchQuery = event.target.value;
   }
 
-  onGetCharacterCountSuccess(data) {
-    this.totalCharacters = data.count;
+  onGetDishCountSuccess(data) {
+    this.totalDishes = data.count;
   }
 
-  onGetCharacterCountFail(jqXhr) {
+  onGetDishCountFail(jqXhr) {
     toastr.error(jqXhr.responseJSON.message);
   }
 }

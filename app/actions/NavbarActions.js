@@ -7,34 +7,34 @@ class NavbarActions {
       'updateOnlineUsers',
       'updateAjaxAnimation',
       'updateSearchQuery',
-      'getCharacterCountSuccess',
-      'getCharacterCountFail',
-      'findCharacterSuccess',
-      'findCharacterFail'
+      'getDishCountSuccess',
+      'getDishCountFail',
+      'findDishSuccess',
+      'findDishFail'
     );
   }
 
-  findCharacter(payload) {
+  findDish(payload) {
     $.ajax({
-      url: '/api/characters/search',
+      url: '/api/dishes/search',
       data: { name: payload.searchQuery }
     })
       .done((data) => {
         assign(payload, data);
-        this.actions.findCharacterSuccess(payload);
+        this.actions.findDishSuccess(payload);
       })
       .fail(() => {
-        this.actions.findCharacterFail(payload);
+        this.actions.findDishFail(payload);
       });
   }
 
-  getCharacterCount() {
-    $.ajax({ url: '/api/characters/count' })
+  getDishCount() {
+    $.ajax({ url: '/api/dishes/count' })
       .done((data) => {
-        this.actions.getCharacterCountSuccess(data)
+        this.actions.getDishCountSuccess(data)
       })
       .fail((jqXhr) => {
-        this.actions.getCharacterCountFail(jqXhr)
+        this.actions.getDishCountFail(jqXhr)
       });
   }
 }

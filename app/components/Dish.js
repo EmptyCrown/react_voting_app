@@ -46,14 +46,12 @@ class Dish extends React.Component {
       <div className='container'>
         <div className='profile-img'>
           <a className='magnific-popup' href={'http://www.thecheesecakefactory.com' + this.state.image}>
-            <img src={'http://www.thecheesecakefactory.com' + this.state.image} />
+            <img src={'http://www.thecheesecakefactory.com' + this.state.image} style={{"width":256, "height":256}} />
           </a>
         </div>
         <div className='profile-info clearfix'>
           <h2><strong>{this.state.name}</strong></h2>
-          // <h4 className='lead'>Race: <strong>{this.state.race}</strong></h4>
-          // <h4 className='lead'>Bloodline: <strong>{this.state.bloodline}</strong></h4>
-          // <h4 className='lead'>Gender: <strong>{this.state.gender}</strong></h4>
+          <h4 className='lead'>Description: <strong>{this.state.description}</strong></h4>
           <button className='btn btn-transparent'
                   onClick={DishActions.report.bind(this, this.state.characterId)}
                   disabled={this.state.isReported}>

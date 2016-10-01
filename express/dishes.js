@@ -7,18 +7,19 @@ var _ = require('underscore');
 module.exports = function(app) {
 	/**
 	 * GET /api/dishes
-	 * Returns 2 random dishes of the same gender that have not been voted yet.
+	 * Returns 2 random dishes of the same type that have not been voted yet.
 	 */
 	app.get('/api/dishes', function(req, res, next) {
 	  var choices = ['Entree', 'Dessert'];
 	  var randomGender = _.sample(choices);
 
-	  Dish.find({ random: { $near: [Math.random(), 0] } })
+	  Dish.find({random: {$near: [Math.random(),0]}})
 	    .where('voted', false)
 	    .limit(2)
 	    .exec(function(err, dishes) {
 	      if (err) return next(err);
 
+	      //console.log(dishes);
 	      if (dishes.length === 2) {
 	        return res.send(dishes);
 	      }
@@ -154,9 +155,9 @@ module.exports = function(app) {
 	  var params = req.query;
 	  var conditions = {};
 
-	  _.each(params, function(value, key) {
-	    conditions[key] = new RegExp('^' + value + '$', 'i');
-	  });
+	  // _.each(params, function(value, key) {
+	  //   conditions[key] = new RegExp('^' + value + '$', 'i');
+	  // });
 
 	  Dish
 	    .find(conditions)
@@ -164,7 +165,6 @@ module.exports = function(app) {
 	    .limit(100)
 	    .exec(function(err, dishes) {
 	      if (err) return next(err);
-
 	      // Sort by winning percentage
 	      dishes.sort(function(a, b) {
 	        if (a.wins / (a.wins + a.losses) < b.wins / (b.wins + b.losses)) { return 1; }

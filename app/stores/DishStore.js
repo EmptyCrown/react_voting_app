@@ -1,10 +1,10 @@
 import {assign, contains} from 'underscore';
 import alt from '../alt';
-import CharacterActions from '../actions/CharacterActions';
+import DishActions from '../actions/DishActions';
 
-class CharacterStore {
+class DishStore {
   constructor() {
-    this.bindActions(CharacterActions);
+    this.bindActions(DishActions);
     this.dishId = 0;
     this.name = 'TBD';
     this.description = 'TBD';
@@ -16,9 +16,9 @@ class CharacterStore {
     this.isReported = false;
   }
 
-  onGetCharacterSuccess(data) {
+  onGetDishSuccess(data) {
     assign(this, data);
-    //$(document.body).attr('class', 'profile ' + this.race.toLowerCase());
+    $(document.body).attr('class', 'profile cheesecakefactory');
     let localData = localStorage.getItem('FV') ? JSON.parse(localStorage.getItem('FV')) : {};
     let reports = localData.reports || [];
     this.isReported = contains(reports, this.dishId);
@@ -26,7 +26,7 @@ class CharacterStore {
     this.winLossRatio = ((this.wins / (this.wins + this.losses) * 100) || 0).toFixed(1);
   }
 
-  onGetCharacterFail(jqXhr) {
+  onGetDishFail(jqXhr) {
     toastr.error(jqXhr.responseJSON.message);
   }
 
@@ -36,7 +36,7 @@ class CharacterStore {
     localData.reports = localData.reports || [];
     localData.reports.push(this.dishId);
     localStorage.setItem('FV', JSON.stringify(localData));
-    toastr.warning('Character has been reported.');
+    toastr.warning('Dish has been reported.');
   }
 
   onReportFail(jqXhr) {
@@ -44,4 +44,4 @@ class CharacterStore {
   }
 }
 
-export default alt.createStore(CharacterStore);
+export default alt.createStore(DishStore);

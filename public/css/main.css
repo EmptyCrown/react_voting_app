@@ -7340,17 +7340,8 @@ footer .thumb-md:hover {
   color: #fff;
   background-size: cover;
 }
-.profile.amarr {
-  background-image: url('/img/amarr_bg.jpg');
-}
-.profile.caldari {
-  background-image: url('/img/caldari_bg.jpg');
-}
-.profile.gallente {
-  background-image: url('/img/gallente_bg.jpg');
-}
-.profile.minmatar {
-  background-image: url('/img/minmatar_bg.jpg');
+.profile.cheesecakefactory {
+  background-image: url('/img/cheesecakefactory_bg.jpg');
 }
 .profile footer {
   color: #fff;

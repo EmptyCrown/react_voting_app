@@ -4,14 +4,14 @@ import FooterActions from '../actions/FooterActions';
 class FooterStore {
   constructor() {
     this.bindActions(FooterActions);
-    this.characters = [];
+    this.dishes = [];
   }
 
-  onGetTopCharactersSuccess(data) {
-    this.characters = data.slice(0, 5);
+  onGetTopDishesSuccess(data) {
+    this.dishes = data.slice(0, 5);
   }
 
-  onGetTopCharactersFail(jqXhr) {
+  onGetTopDishesFail(jqXhr) {
     // Handle multiple response formats, fallback to HTTP status code number.
     toastr.error(jqXhr.responseJSON && jqXhr.responseJSON.message || jqXhr.responseText || jqXhr.statusText);
   }
